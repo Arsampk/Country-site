@@ -25,6 +25,7 @@ const authService = require('./modules/auth-service'); // Added auth-service mod
  ********************************************************************************/
 
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true })); // Middleware for parsing POST data
 app.use(express.json()); // Middleware for JSON data
 app.use(express.static('public'));
