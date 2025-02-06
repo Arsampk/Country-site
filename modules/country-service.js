@@ -43,28 +43,6 @@ const Country = sequelize.define('Country', {
 
 Country.belongsTo(SubRegion, { foreignKey: 'subRegionId' });
 
-async function importData(countryData, subRegionData) {
-    try {
-        await SubRegion.bulkCreate(subRegionData, { ignoreDuplicates: true });
-        console.log("SubRegions data imported successfully.");
-
-        const subRegions = await SubRegion.findAll();
-        const subRegionMap = {};
-        subRegions.forEach(subRegion => {
-            subRegionMap[subRegion.id] = subRegion.subRegion;
-        });
-
-        const validCountryData = countryData.filter(country => {
-            return subRegionMap[country.subRegionId];
-        });
-
-        await Country.bulkCreate(validCountryData, { ignoreDuplicates: true });
-        console.log("Countries data imported successfully.");
-    } catch (error) {
-        console.error("Error importing data:", error);
-    }
-}
-
 function initialize(countryData, subRegionData) {
     return sequelize.sync({ alter: true })
         .then(async () => {

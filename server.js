@@ -5,8 +5,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const countryData = require('./data/countryData.json');
-const subRegionData = require('./data/subRegionData.json');
+
 const clientSessions = require("client-sessions");
 const authService = require('./modules/auth-service'); // Added auth-service module
 
@@ -51,7 +50,7 @@ function ensureLogin(req, res, next) {
 
 const countryService = require('./modules/country-service');
 Promise.all([
-    countryService.initialize(countryData, subRegionData),
+    //countryService.initialize(countryData, subRegionData),
     authService.initialize()
 ])
     .then(() => {
