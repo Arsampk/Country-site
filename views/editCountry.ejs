@@ -1,0 +1,35 @@
+<%- include('partials/navbar', { page: '' }) %>
+
+<section class="container mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-semibold text-center mb-6 text-gray-800">Edit Country: <%= country.commonName %></h1>
+
+    <form method="POST" action="/editCountry/<%= country.id %>" class="space-y-6">
+        <div class="flex flex-col">
+            <label for="commonName" class="text-lg font-medium text-gray-700">Common Name</label>
+            <input type="text" name="commonName" id="commonName" value="<%= country.commonName %>" required
+                   class="border-2 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        </div>
+
+        <div class="flex flex-col">
+            <label for="officialName" class="text-lg font-medium text-gray-700">Official Name</label>
+            <input type="text" name="officialName" id="officialName" value="<%= country.officialName %>" required
+                   class="border-2 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        </div>
+
+        <div class="flex flex-col">
+            <label for="subRegionId" class="text-lg font-medium text-gray-700">SubRegion</label>
+            <select name="subRegionId" id="subRegionId" class="border-2 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <% subRegions.forEach(subRegion => { %>
+                    <option value="<%= subRegion.id %>" <%= (subRegion.id === country.subRegionId) ? 'selected' : '' %>><%= subRegion.subRegion %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit"
+                    class="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500">
+                Update Country
+            </button>
+        </div>
+    </form>
+</section>

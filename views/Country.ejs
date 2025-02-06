@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= country.commonName %> - Country Details</title>
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-r from-gray-50 to-gray-100">
+<%- include('partials/navbar', { page: 'country' }) %>
+
+<section class="hero bg-gradient-to-r from-green-100 to-green-300 p-8 rounded-lg shadow-lg text-center">
+    <h1 class="text-5xl font-bold text-green-700"><%= country.commonName %></h1>
+</section>
+<section class="hero bg-gradient-to-r from-green-100 to-green-300 p-6 text-center">
+    <p class="mt-4 text-gray-800">Explore details about <%= country.commonName %>. You can also edit or delete the information below.</p>
+</section>
+
+<div class="container mx-auto mt-10 p-8 bg-white rounded-lg shadow-xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+            <p class="text-xl text-gray-700"><strong>Official Name:</strong> <%= country.officialName %></p>
+            <% if (country.nativeName && country.nativeName !== country.commonName) { %>
+                <p class="text-xl text-gray-700"><strong>Native Name:</strong> <%= country.nativeName %></p>
+            <% } %>
+            <p class="text-xl text-gray-700"><strong>Capital:</strong> <%= country.capital %></p>
+            <p class="text-xl text-gray-700"><strong>Population:</strong> <%= country.population.toLocaleString() %></p>
+            <p class="text-xl text-gray-700"><strong>Region:</strong> <%= country.region %></p>
+            <p class="text-xl text-gray-700"><strong>Subregion:</strong> <%= country.subRegion %></p>
+            <p class="text-xl text-gray-700"><strong>Area:</strong> <%= country.area.toLocaleString() %> Km<sup>2</sup></p>
+        </div>
+        <div>
+            <img src="<%= country.flag %>" alt="Flag of <%= country.commonName %>" class="w-full max-w-xs rounded-lg shadow-md border border-gray-300">
+            <div class="mt-4 flex items-center gap-4">
+                <strong class="text-gray-700">Coat of Arms:</strong>
+                <img src="<%= country.coatOfArms %>" alt="Coat of Arms of <%= country.commonName %>" class="h-16 w-16 rounded-full shadow-md border border-gray-300">
+            </div>
+        </div>
+    </div>
+
+    <% if (session.user) { %>
+        <div class="mt-8 flex justify-center gap-6">
+            <a href="/editCountry/<%= country.id %>" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-lg hover:bg-blue-600 transition-colors">Edit Country</a>
+            <form action="/deleteCountry/<%= country.id %>" method="POST" class="inline">
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md shadow-lg hover:bg-red-600 transition-colors">Delete Country</button>
+            </form>
+        </div>
+    <% } %>
+
+    <div class="mt-8 flex justify-center gap-6">
+        <a href="#" onclick="history.back(); return false;" class="bg-gray-500 text-white px-4 py-2 rounded-md shadow-lg hover:bg-gray-600 transition-colors">Go Back</a>
+    </div>
+</div>
+</body>
+</html>

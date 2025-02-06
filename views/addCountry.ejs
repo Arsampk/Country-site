@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Country</title>
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-r from-gray-50 to-gray-100">
+<%- include('partials/navbar', { page: '/addCountry' }) %>
+
+<section class="hero bg-gradient-to-r from-green-100 to-green-300 p-8 rounded-lg shadow-lg text-center">
+    <h1 class="text-5xl font-bold text-green-700">Add New Country</h1>
+</section>
+<section class="hero bg-gradient-to-r from-green-100 to-green-300 p-8 rounded-lg shadow-lg text-center">
+    <p class="mt-4 text-lg text-gray-800">Fill in the details of the country you want to add to the collection</p>
+</section>
+
+<div class="container mx-auto mt-10 p-8 bg-white rounded-lg shadow-xl">
+    <form method="POST" action="/addCountry">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="mb-4">
+                <label for="commonName" class="block text-sm font-medium text-gray-700">Common Name</label>
+                <input type="text" id="commonName" name="commonName" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="officialName" class="block text-sm font-medium text-gray-700">Official Name</label>
+                <input type="text" id="officialName" name="officialName" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="nativeName" class="block text-sm font-medium text-gray-700">Native Name</label>
+                <input type="text" id="nativeName" name="nativeName" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="id" class="block text-sm font-medium text-gray-700">ISO Numeric-3 Code (ID)</label>
+                <input type="text" id="id" name="id" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="capital" class="block text-sm font-medium text-gray-700">Capital</label>
+                <input type="text" id="capital" name="capital" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="languages" class="block text-sm font-medium text-gray-700">Languages</label>
+                <input type="text" id="languages" name="languages" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="population" class="block text-sm font-medium text-gray-700">Population</label>
+                <input type="number" id="population" name="population" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="area" class="block text-sm font-medium text-gray-700">Area</label>
+                <input type="number" id="area" name="area" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="currencies" class="block text-sm font-medium text-gray-700">Currencies</label>
+                <input type="text" id="currencies" name="currencies" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="subRegionId" class="block text-sm font-medium text-gray-700">SubRegion</label>
+                <select id="subRegionId" name="subRegionId" class="input input-bordered w-full rounded-lg" required>
+                    <% subRegions.forEach(subRegion => { %>
+                        <option value="<%= subRegion.id %>"><%= subRegion.subRegion %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="landlocked" class="block text-sm font-medium text-gray-700 mr-2">Is Landlocked</label>
+                <input type="checkbox" id="landlocked" name="landlocked" class="checkbox checkbox-primary">
+            </div>
+            <div class="mb-4">
+                <label for="openStreetMaps" class="block text-sm font-medium text-gray-700">OpenStreetMaps</label>
+                <input type="text" id="openStreetMaps" name="openStreetMaps" class="input input-bordered w-full rounded-lg">
+            </div>
+            <div class="mb-4">
+                <label for="flag" class="block text-sm font-medium text-gray-700">Flag URL</label>
+                <input type="text" id="flag" name="flag" class="input input-bordered w-full rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="coatOfArms" class="block text-sm font-medium text-gray-700">Coat of Arms URL</label>
+                <input type="text" id="coatOfArms" name="coatOfArms" class="input input-bordered w-full rounded-lg" required>
+            </div>
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-colors">Add Country</button>
+    </form>
+</div>
+
+</body>
+</html>

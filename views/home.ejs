@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Countries</title>
+</head>
+<body class="bg-gradient-to-r from-gray-50 to-gray-100">
+<%- include('partials/navbar', { page: 'home' }) %>
+
+<div class="container mx-auto p-8">
+    <div class="hero bg-gradient-to-r from-blue-200 to-blue-400 rounded-lg p-8 shadow-lg">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold text-blue-800 mb-6">Welcome to the Countries Library</h1>
+                <p class="text-lg text-gray-800 mb-6">Explore the World</p>
+                <a href="/countries" class="bg-blue-500 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-600 transition-colors">View Countries</a>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        <!-- Country card 1 -->
+        <div class="card bg-white rounded-lg shadow-lg">
+            <img src="/flags/ca.png" alt="Canada Flag" class="w-full h-32 object-cover rounded-t-lg">
+            <div class="card-body p-6">
+                <h2 class="text-2xl font-bold text-gray-800">Canada</h2>
+                <p class="text-gray-700 mt-2">Capital: Ottawa</p>
+                <p class="text-gray-700">Population: 38 million</p>
+                <a href="/countries/124" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 inline-block hover:bg-blue-600 transition-colors">Learn more</a>
+            </div>
+        </div>
+
+        <!-- Country card 2 -->
+        <div class="card bg-white rounded-lg shadow-lg">
+            <img src="/flags/us.png" alt="United States Flag" class="w-full h-32 object-cover rounded-t-lg">
+            <div class="card-body p-6">
+                <h2 class="text-2xl font-bold text-gray-800">United States</h2>
+                <p class="text-gray-700 mt-2">Capital: Washington DC</p>
+                <p class="text-gray-700">Population: 332 million</p>
+                <a href="/countries/840" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 inline-block hover:bg-blue-600 transition-colors">Learn more</a>
+            </div>
+        </div>
+
+        <!-- Country card 3 -->
+        <div class="card bg-white rounded-lg shadow-lg">
+            <img src="/flags/uk.png" alt="United Kingdom Flag" class="w-full h-32 object-cover rounded-t-lg">
+            <div class="card-body p-6">
+                <h2 class="text-2xl font-bold text-gray-800">United Kingdom</h2>
+                <p class="text-gray-700 mt-2">Capital: London</p>
+                <p class="text-gray-700">Population: 67 million</p>
+                <a href="/countries/826" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 inline-block hover:bg-blue-600 transition-colors">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('.dropdown').addEventListener('click', function() {
+        this.querySelector('.dropdown-content').classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>

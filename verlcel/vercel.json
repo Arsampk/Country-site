@@ -1,0 +1,19 @@
+{
+  "name": "web322-assignment-5",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.10.0",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "16.x"
+  }
+}

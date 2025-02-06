@@ -1,0 +1,30 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/main.css" rel="stylesheet" />
+    <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+    />
+</head>
+<nav class="bg-black p-4">
+    <div class="flex justify-between items-center">
+        <div class="flex space-x-6">
+            <a href="/" class="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600">Home</a>
+            <a href="/countries" class="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600">Countries</a>
+            <a href="/about" class="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600">About</a>
+        </div>
+        <% if (!session.user) { %>
+            <div class="flex space-x-6">
+                <a href="/register" class="px-4 py-2 rounded bg-yellow-500 text-white hover:bg-yellow-600">Register</a>
+                <a href="/login" class="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-600">Login</a>
+            </div>
+        <% } else { %>
+            <div class="flex space-x-6">
+                <a href="/addCountry" class="px-4 py-2 rounded bg-pink-500 text-white hover:bg-pink-600">Add Country</a>
+                <a href="/userHistory" class="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"><%= session.user.userName %></a>
+                <a href="/logout" class="px-4 py-2 rounded bg-orange-500 text-white hover:bg-orange-600">Logout</a>
+            </div>
+        <% } %>
+    </div>
+</nav>
