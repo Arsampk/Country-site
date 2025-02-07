@@ -1,8 +1,6 @@
 {
   "version": 2,
   "builds": [],
-  "routes": [], 
-
   "routes": [
     {
       "src": "/css/(.*)",
