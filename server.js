@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true })); // Middleware for parsing POST data
 app.use(express.json()); // Middleware for JSON data
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(clientSessions({
     cookieName: "session",
     secret: "yourSecretStringHere",
@@ -49,8 +49,11 @@ function ensureLogin(req, res, next) {
 }
 
 const countryService = require('./modules/country-service');
+const fs = require('fs');
+fs.readdirSync(path.join(__dirname, 'public/css')).forEach(file => {
+    console.log("STATIC FILE FOUND:", file);
+});
 Promise.all([
-    //countryService.initialize(countryData, subRegionData),
     authService.initialize()
 ])
     .then(() => {
